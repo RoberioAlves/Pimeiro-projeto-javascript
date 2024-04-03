@@ -9,13 +9,12 @@ async function convertValue() {
 
     const currecyValueConverted = document.querySelector(".currency-value") // outras moedas
 
-    
-const data = await fetch(' https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL').then( Response => Response.json())
 
-const dolarToday = data.USDBRL.high
-const euroToday = data.EURBRL.high
-const bitcoinToday = data.BTCBRL.high
-const libraToday = 6.3
+    const data = await fetch(' https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL').then(Response => Response.json())
+
+    const dolarToday = data.USDBRL.high
+    const euroToday = data.EURBRL.high
+    const bitcoinToday = data.BTCBRL.high
 
 
     if (currencySelect.value == "dolar") {
@@ -40,12 +39,7 @@ const libraToday = 6.3
         }).format(inputCurrencyValue / bitcoinToday)
     }
 
-    if (currencySelect.value == "libra") {
-        currecyValueConverted.innerHTML = new Intl.NumberFormat("en-GB", {
-            style: "currency",
-            currency: "GBP"
-        }).format(inputCurrencyValue / libraToday)
-    }
+
 
     currecyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
         style: "currency",
@@ -74,10 +68,7 @@ function changeCurrency() {
         currencyImg.src = "./assets/bitcoin.png"
     }
 
-    if (currencySelect.value == "libra") {
-        currencyName.innerHTML = "Libra"
-        currencyImg.src = "./assets/libra.png"
-    }
+
 
     convertValue()
 
